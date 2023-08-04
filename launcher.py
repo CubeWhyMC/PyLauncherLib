@@ -23,8 +23,17 @@ class MinecraftArgs(object):
 
 
 class JavaAgent(object):
-    def __init__(self):
+    def __init__(self, path: str, arg: str = None):
         object.__init__(self)
+        self.path = path
+        self.arg = arg
+
+    def get_vm_arg(self) -> str:
+        """Get arg for Java VM"""
+        arg = "-javaagent:" + os.path.abspath(self.path)
+        if self.arg is not None:
+            arg += "=" + self.arg
+        return arg
 
 
 def get_main_class(version: str = None, branch: str = None, module: str = None) -> str:
@@ -102,4 +111,5 @@ def get_args(version: str, branch: str, module: str, base_dir: str, mc_args: Min
         # Add ichor args
         args.append("--ichorClassPath " + ",".join(classpath))  # Lunar classpath
         args.append("--ichorExternalFiles " + ",".join(ichor))  # Lunar ichor files
+    args += game_args  # Add gameArgs
     return args
