@@ -81,3 +81,4 @@ def get_lunar_textures_baseurl(version: str = None, branch: str = None, module: 
     if not all([version, branch, module]):
         return "https://textures.lunarclientcdn.com/file/"
     return get_version(version, branch, module)["baseUrl"]
+
