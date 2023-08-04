@@ -91,8 +91,8 @@ def get_args(version: str, branch: str, module: str, base_dir: str, mc_args: Min
     args.append("--installationId INSTALL-ID")
     args.append("--workingDirectory " + base_dir)
     args.append("--classpathDir " + base_dir)
-    args.append("--width " + mc_args.width)
-    args.append("--height " + mc_args.height)
+    args.append("--width " + str(mc_args.width))
+    args.append("--height " + str(mc_args.height))
     args.append("--gameDir " + mc_args.game_dir)
     args.append("--texturesDir " + mc_args.textures_dir)
     if mc_args.server is not None:
