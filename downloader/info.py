@@ -26,7 +26,7 @@ def get_version(version: str, branch: str, module: str) -> dict:
         "branch": branch,
         "module": module
     }
-    r = requests.post(API, data=json.dumps(data))
+    r = requests.post(API, data=json.dumps(data), headers={"Content-Type": "application/json"})
     return r.json()
 
 
